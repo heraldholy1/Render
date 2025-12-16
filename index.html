@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyCoin Token - The Future of Digital Assets</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --accent: #0ea5e9;
+            --light-bg: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-900: #111827;
+            --text-primary: #111827;
+            --text-secondary: #6b7280;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--light-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gray-200);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 5% 4rem;
+            background: linear-gradient(180deg, var(--gray-50) 0%, var(--light-bg) 100%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--gray-900);
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .cta-text {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 2rem auto 0;
+            padding: 1.5rem;
+            background: var(--gray-50);
+            border-radius: 12px;
+            border: 1px solid var(--gray-200);
+            line-height: 1.7;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 5%;
+            animation: fadeInUp 0.8s ease-out 0.7s both;
+        }
+
+        .stat-card {
+            background: var(--light-bg);
+            border: 1px solid var(--gray-200);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 24px rgba(37, 99, 235, 0.1);
+        }
+
+        .stat-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Features Section */
+        .features {
+            max-width: 1400px;
+            margin: 8rem auto;
+            padding: 0 5%;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--gray-900);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--light-bg);
+            border: 1px solid var(--gray-200);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 16px 32px rgba(37, 99, 235, 0.08);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gray-50);
+            border-radius: 12px;
+            border: 1px solid var(--gray-200);
+        }
+
+        .feature-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--primary);
+            fill: none;
+        }
+
+        .feature-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--gray-900);
+            font-weight: 600;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* Roadmap Section */
+        .roadmap {
+            max-width: 1000px;
+            margin: 8rem auto;
+            padding: 0 5%;
+        }
+
+        .roadmap-timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .roadmap-timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gray-200);
+        }
+
+        .roadmap-item {
+            position: relative;
+            margin-bottom: 4rem;
+            padding-left: 30px;
+        }
+
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: -35px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            background: var(--light-bg);
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+        }
+
+        .roadmap-item.completed::before {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .roadmap-phase {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .roadmap-item h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--gray-900);
+            font-weight: 600;
+        }
+
+        .roadmap-item p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            max-width: 1000px;
+            margin: 8rem auto;
+            padding: 4rem 5%;
+            text-align: center;
+            background: var(--gray-50);
+            border-radius: 24px;
+            border: 1px solid var(--gray-200);
+        }
+
+        .cta-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+            color: var(--gray-900);
+            font-weight: 600;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        /* Documentation Sections */
+        .doc-section {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 4rem 5%;
+            background: var(--gray-50);
+            border-radius: 24px;
+            border: 1px solid var(--gray-200);
+        }
+
+        .doc-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 2rem;
+            color: var(--gray-900);
+            font-weight: 700;
+        }
+
+        .doc-section h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--gray-900);
+            font-weight: 600;
+        }
+
+        .doc-section h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+            color: var(--gray-700);
+            font-weight: 600;
+        }
+
+        .doc-section p, .doc-section li {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .doc-section ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .doc-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .doc-section strong {
+            color: var(--gray-900);
+            font-weight: 600;
+        }
+
+        .doc-highlight {
+            background: white;
+            border-left: 3px solid var(--primary);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        footer {
+            max-width: 1400px;
+            margin: 4rem auto 0;
+            padding: 3rem 5%;
+            border-top: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-links a.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gray-50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-200);
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(37, 99, 235, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 5%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 120px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.05rem;
+            }
+
+            .roadmap-timeline {
+                padding-left: 30px;
+            }
+
+            footer {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">MYCOIN</div>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#roadmap">Roadmap</a></li>
+            <li><a href="#community">Community</a></li>
+            <li><a href="#docs">Docs</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>The Future of Digital Assets Starts Here</h1>
+            <p>Experience next-generation tokenization with unparalleled security, lightning-fast transactions, and a community-driven ecosystem built for tomorrow.</p>
+            
+            <p style="margin-top: 2rem; font-size: 0.95rem; color: var(--primary); font-weight: 500;">
+                ↓ Scroll down to read our "Tokenomics & Supply Framework" and "Investor & Buyer Overview"
+            </p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">$2.4M</div>
+                <div class="stat-label">Market Cap</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">15K+</div>
+                <div class="stat-label">Token Holders</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">99.9%</div>
+                <div class="stat-label">Uptime</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">&lt;2s</div>
+                <div class="stat-label">Transaction Time</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <h2 class="section-title">Why Choose MyCoin Token</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                </div>
+                <h3>Bank-Grade Security</h3>
+                <p>Multi-layered security architecture with advanced encryption, regular audits, and battle-tested smart contracts to keep your assets safe.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                </div>
+                <h3>Lightning Fast</h3>
+                <p>Experience near-instant transactions with our optimized blockchain infrastructure. No more waiting - your transfers happen in real-time.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    </svg>
+                </div>
+                <h3>Global Accessibility</h3>
+                <p>Access your tokens anywhere, anytime. Our platform is built for a borderless world with support for multiple currencies and regions.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                </div>
+                <h3>Low Fees</h3>
+                <p>Enjoy minimal transaction costs without compromising on speed or security. More value stays in your pocket where it belongs.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <h3>Community Driven</h3>
+                <p>Built by the community, for the community. Participate in governance and help shape the future of MyCoin Token.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                        <polyline points="17 6 23 6 23 12"></polyline>
+                    </svg>
+                </div>
+                <h3>Sustainable Growth</h3>
+                <p>Our tokenomics are designed for long-term value creation with deflationary mechanisms and staking rewards.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="roadmap" id="roadmap">
+        <h2 class="section-title">Our Journey</h2>
+        <div class="roadmap-timeline">
+            <div class="roadmap-item completed">
+                <div class="roadmap-phase">Q3 2025 - Completed</div>
+                <h3>Platform Launch</h3>
+                <p>Launched MyCoin Token on the Solana blockchain with peer-to-peer private sales to investors and buyers. Completed initial security audit and established core smart contract infrastructure.</p>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-phase">Q4 2025 - In Progress</div>
+                <h3>Ecosystem Expansion</h3>
+                <p>Working on wallet integration and infrastructure development. Establishing strategic partnerships across various sectors. Expanding our community programs, developer tools, and growing the team.</p>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-phase">Q1 2026 - Upcoming</div>
+                <h3>Real World Asset Tokenization & Native Blockchain Development</h3>
+                <p>Launching RWA tokenization platform starting with real estate assets. Commencing native blockchain development. Rolling out initial client partnerships across two different verticals with an estimated two partners.</p>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-phase">Q2 2026 - Future</div>
+                <h3>Native Blockchain Launch</h3>
+                <p>Launching our own blockchain with native token migration for MyCoin holders (potential for earlier deployment). Implementing bridge technology and enhanced governance features with significantly improved transaction speeds.</p>
+            </div>
+            <div class="roadmap-item">
+                <div class="roadmap-phase">Q3 2026 - Future</div>
+                <h3>Enterprise Solutions</h3>
+                <p>Introducing enterprise-grade APIs, white-label solutions, and institutional custody options. Scaling infrastructure to support millions of transactions daily.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="community">
+        <h2>Join the MyCoin Revolution</h2>
+        <p>Be part of a growing community shaping the future of digital finance. Connect with us to learn more about investment opportunities.</p>
+    </section>
+
+    <section class="doc-section" id="tokenomics">
+        <h2>Tokenomics & Supply Framework</h2>
+        
+        <h3>MYCOIN TOKEN ("MYC")</h3>
+        
+        <h4>Overview</h4>
+        <p>The token is currently issued as a Solana SPL precursor token intended to support early ecosystem participation while the project's native blockchain and native coin are under development.</p>
+        <p>The precursor token will be eligible for a one-to-one upgrade into the native coin once the native chain is live. The precursor token is not designed to coexist permanently with the native coin.</p>
+        
+        <h4>Regulatory Positioning</h4>
+        <p>The token is not registered with the U.S. Securities and Exchange Commission and is not offered as a regulated investment product.</p>
+        <p>The project does not make representations regarding profit, returns, or price appreciation. Any market value is independently determined by participants and market activity.</p>
+        
+        <h4>Token Type and Authority</h4>
+        <p><strong>Standard:</strong> Solana SPL Token<br>
+        <strong>Mint Authority:</strong> Active<br>
+        <strong>Freeze Authority:</strong> Disabled<br>
+        <strong>Governance:</strong> None at the token level</p>
+        <p>This structure ensures full user custody, prevents unilateral freezing of user funds, and allows founder-led control during early development.</p>
+        
+        <h4>Supply Summary</h4>
+        <p><strong>Current Minted Supply:</strong> 4.68 trillion tokens<br>
+        Actively circulating and usable</p>
+        <p><strong>Target Supply Cap:</strong> 20 trillion tokens<br>
+        Soft cap by design<br>
+        No immutable hard limit</p>
+        <p>The absence of a hard cap allows the project to respond to demand without artificial constraints.</p>
+        
+        <h4>Supply Expansion Philosophy</h4>
+        <p>Supply expansion may occur in response to demonstrated ecosystem demand, liquidity requirements, or strategic or operational needs.</p>
+        <p>Additional minting may or may not be tied to a specific predefined use case at the time of minting. Demand itself is considered a valid justification in early-stage networks.</p>
+        
+        <h4>Strategic Reserve ("Piggy Bank")</h4>
+        <p><strong>Structure:</strong> Exists as unminted supply | Not held in wallets | Not circulating</p>
+        <p><strong>Purpose:</strong> Liquidity provisioning | Strategic partnerships | Ecosystem expansion | Contingency or stabilization actions</p>
+        <p><strong>Control:</strong> Founder-controlled in early phases | All mint events are on-chain, publicly verifiable, and disclosed through official channels</p>
+        
+        <h4>Minting Schedule</h4>
+        <p><strong>Phase 1 – Initial State</strong><br>
+        Minted supply: 4.68 trillion | Founder retains mint authority</p>
+        <p><strong>Phase 2 – Expansion</strong><br>
+        Minted in discretionary tranches | Typical range between 500 billion and 1 trillion per mint event | Each event disclosed with a high-level rationale</p>
+        <p><strong>Phase 3 – Pre-Migration</strong><br>
+        Minting on Solana ceases | Supply becomes fixed on Solana</p>
+        <p><strong>Phase 4 – Native Chain</strong><br>
+        Native coin minted one-to-one | Solana precursor token phased out</p>
+        
+        <h4>Pricing and Pre-Market Discovery</h4>
+        <p>Initial reference price is one U.S. dollar per token.</p>
+        <p>Private transactions may occur at negotiated prices. Pre-market pricing reflects private OTC activity, bilateral agreements, and issuer reference pricing. This is not equivalent to public market price discovery.</p>
+        
+        <h4>Migration to Native Chain</h4>
+        <p><strong>Mechanism:</strong> User-initiated one-to-one upgrade through a bridge interface | Solana tokens are burned | Native coins are minted on the new chain</p>
+        <p><strong>Guarantees:</strong> No double supply | Auditable upgrade path | Wallet ownership preserved where technically feasible</p>
+        
+        <h4>Transparency and Disclosure</h4>
+        <p><strong>Authoritative Source:</strong> On-chain data is the authoritative source of supply information.</p>
+        <p><strong>Disclosure Channels:</strong> Official website supply page | Public supply log | Official announcements via email and community channels</p>
+        <p>Best-effort notification will be provided for material supply events.</p>
+        
+        <h4>Governance</h4>
+        <p>There is no token-level governance during early phases. Governance may exist at the application, project, or ecosystem initiative level.</p>
+        
+        <h4>Risk Disclosure</h4>
+        <p>Supply expansion risk | Founder-led control risk | Migration execution risk | Regulatory uncertainty</p>
+        <p>Participation should be evaluated based on alignment with the project and ecosystem.</p>
+    </section>
+
+    <section class="doc-section" id="investor-overview">
+        <h2>Investor & Buyer Overview</h2>
+        
+        <h4>Token Snapshot</h4>
+        <p><strong>Current token:</strong> Solana SPL precursor token<br>
+        <strong>Future token:</strong> Native coin on a proprietary blockchain<br>
+        <strong>Upgrade path:</strong> One-to-one token upgrade at native chain launch</p>
+        
+        <h4>Regulatory Notice</h4>
+        <p>The token is not registered with the U.S. Securities and Exchange Commission and is not offered as a regulated investment product. No guarantees are made regarding price, returns, or liquidity.</p>
+        
+        <h4>Supply Overview</h4>
+        <p><strong>Current minted supply:</strong> 4.68 trillion tokens<br>
+        <strong>Target supply cap:</strong> 20 trillion tokens<br>
+        <strong>Supply expansion:</strong> Demand-driven and disclosed<br>
+        <strong>Hard cap:</strong> None by design</p>
+        
+        <h4>Minting Policy</h4>
+        <p>Additional tokens may be minted in response to ecosystem demand, liquidity needs, or strategic or operational requirements.</p>
+        <p>Minting decisions may not be tied to a single predefined use case.</p>
+        
+        <h4>Pricing</h4>
+        <p>Initial reference price is one U.S. dollar per token.<br>
+        Private pricing may be negotiated.<br>
+        Pre-market pricing reflects private transactions and reference pricing, not public market conditions.</p>
+        
+        <h4>Liquidity and Use</h4>
+        <p>Tokens are immediately transferable.<br>
+        Tokens are intended for use and holding prior to native chain launch.<br>
+        Holders will upgrade tokens to the native coin in the future.</p>
+        
+        <h4>Transparency</h4>
+        <p>All minting occurs on-chain.<br>
+        Supply changes are publicly verifiable.<br>
+        Official updates are provided through project communication channels.</p>
+        
+        <h4>Key Risks</h4>
+        <p>Supply expansion | Regulatory uncertainty | Founder-led early control | Migration execution</p>
+        
+        <div class="doc-highlight">
+            <p style="margin-bottom: 0;"><strong>Final Note:</strong> This token represents early participation in a developing ecosystem. The project prioritizes flexibility, transparency, and long-term development over rigid constraints during its build phase.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="logo">MYCOIN</div>
+        <ul class="footer-links">
+            <li><a href="#docs">Documentation</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="https://discord.gg/B7qDZxvc" target="_blank" rel="noopener">Discord</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms</a></li>
+        </ul>
+        <div class="social-links">
+            <a href="#" aria-label="Twitter">𝕏</a>
+            <a href="#" aria-label="Discord">💬</a>
+            <a href="#" aria-label="Telegram">✈️</a>
+            <a href="#" aria-label="GitHub">👨‍💻</a>
+        </div>
+    </footer>
+
+</body>
+</html>
